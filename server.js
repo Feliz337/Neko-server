@@ -6,8 +6,9 @@ const mqtt = require('mqtt');
 const mqttClient = mqtt.connect("mqtt://127.0.0.1");
 
 
-
 mqttClient.subscribe("NEKO/SWITCH/01");
+mqttClient.subscribe("NEKO/SWITCH/02");
+
 
 // setInterval(() => {
 //     mqttClient.publish("NEKO/SWITCH/01", "foooooo");
