@@ -25,7 +25,8 @@ let switch02BurnOut = false;
 let switch01BurnOutAt = Date.now();
 let switch02BurnOutAt = Date.now();
 
-let CoolDownTime = 5000
+let switch01CoolDownTime = 5000
+let switch02CoolDownTime = 5000
 
 
 
@@ -42,9 +43,9 @@ app.get("/SWITCH/01/on", ((req, res) => {
         res.status(200).send("SUCCESS,01ON");
 
 
-        setTimeout(() => switch01BurnOut = false, CoolDownTime);
+        setTimeout(() => switch01BurnOut = false, switch01CoolDownTime);
     } else {
-        res.status(400).send(`BurnOut,${switch01BurnOut - (Date.now() - switch01BurnOutAt)}`);
+        res.status(400).send(`BurnOut,${switch01CoolDownTime - (Date.now() - switch01BurnOutAt)}`);
     }
 
 }));
@@ -57,9 +58,9 @@ app.get("/SWITCH/01/off", ((req, res) => {
         mqttClient.publish("NEKO/SWITCH/01", "off");
         res.status(200).send("SUCCESS,01OFF");
 
-        setTimeout(() => switch01BurnOut = false, CoolDownTime);
+        setTimeout(() => switch01BurnOut = false, switch01CoolDownTime);
     } else {
-        res.status(400).send(`BurnOut,${switch01BurnOut - (Date.now() - switch01BurnOutAt)}`);
+        res.status(400).send(`BurnOut,${switch01CoolDownTime - (Date.now() - switch01BurnOutAt)}`);
     }
 
 }));
@@ -71,9 +72,9 @@ app.get("/SWITCH/02/on", ((req, res) => {
         mqttClient.publish("NEKO/SWITCH/02", "on");
         res.status(200).send("SUCCESS,02ON");
 
-        setTimeout(() => switch02BurnOut = false, CoolDownTime);
+        setTimeout(() => switch02BurnOut = false, switch02CoolDownTime);
     } else {
-        res.status(400).send(`BurnOut,${switch02BurnOut - (Date.now() - switch02BurnOutAt)}`);
+        res.status(400).send(`BurnOut,${switch02CoolDownTime - (Date.now() - switch02BurnOutAt)}`);
     }
 
 }));
@@ -86,9 +87,9 @@ app.get("/SWITCH/02/off", ((req, res) => {
         mqttClient.publish("NEKO/SWITCH/02", "off");
         res.status(200).send("SUCCESS,02OFF");
 
-        setTimeout(() => switch02BurnOut = false, CoolDownTime);
+        setTimeout(() => switch02BurnOut = false, switch02CoolDownTime);
     } else {
-        res.status(400).send(`BurnOut,${switch02BurnOut - (Date.now() - switch02BurnOutAt)}`);
+        res.status(400).send(`BurnOut,${switch02CoolDownTime - (Date.now() - switch02BurnOutAt)}`);
     }
 }));
 
