@@ -26,7 +26,7 @@ let switch01BurnOutAt = Date.now();
 let switch02BurnOutAt = Date.now();
 
 let switch01CoolDownTime = 5000
-let switch02CoolDownTime = 5000
+let switch02CoolDownTime = 500
 
 
 
